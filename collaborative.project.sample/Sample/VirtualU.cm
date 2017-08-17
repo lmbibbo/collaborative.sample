@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cm:CollaborativeModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://cm/1.0" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <packagedElement xsi:type="cm:Workspace" name="Aula"/>
+  <packagedElement xsi:type="cm:Workspace" name="Auditorio"/>
+  <packagedElement xsi:type="cm:Workspace" name="Laboratorio"/>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Alumno"/>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Docente"/>
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="Clase">
+    <ownedBehavior xsi:type="uml:ProtocolStateMachine">
+      <region/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="Consulta">
+    <ownedBehavior xsi:type="uml:ProtocolStateMachine">
+      <region/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.7/@ownedEnd.0 //@packagedElement.7/@ownedEnd.1">
+    <ownedEnd type="//Consulta" association="//@packagedElement.7"/>
+    <ownedEnd type="//Aula" association="//@packagedElement.7"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.8/@ownedEnd.0 //@packagedElement.8/@ownedEnd.1">
+    <ownedEnd type="//Clase" association="//@packagedElement.8"/>
+    <ownedEnd type="//Aula" association="//@packagedElement.8"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.9/@ownedEnd.0 //@packagedElement.9/@ownedEnd.1">
+    <ownedEnd type="//Clase" association="//@packagedElement.9"/>
+    <ownedEnd type="//Alumno" association="//@packagedElement.9"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.10/@ownedEnd.0 //@packagedElement.10/@ownedEnd.1">
+    <ownedEnd type="//Clase" association="//@packagedElement.10"/>
+    <ownedEnd type="//Docente" association="//@packagedElement.10"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Tutor"/>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.12/@ownedEnd.0 //@packagedElement.12/@ownedEnd.1">
+    <ownedEnd type="//Consulta" association="//@packagedElement.12"/>
+    <ownedEnd type="//Tutor" association="//@packagedElement.12"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.13/@ownedEnd.0 //@packagedElement.13/@ownedEnd.1">
+    <ownedEnd type="//Consulta" association="//@packagedElement.13"/>
+    <ownedEnd type="//Alumno" association="//@packagedElement.13"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:Tool" name="Conference"/>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.15/@ownedEnd.0 //@packagedElement.15/@ownedEnd.1">
+    <ownedEnd type="//Clase" association="//@packagedElement.15"/>
+    <ownedEnd type="//Conference" association="//@packagedElement.15"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:Tool" name="Foro"/>
+  <packagedElement xsi:type="cm:Tool" name="Chat"/>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.18/@ownedEnd.0 //@packagedElement.18/@ownedEnd.1">
+    <ownedEnd type="//Clase" association="//@packagedElement.18"/>
+    <ownedEnd type="//Chat" association="//@packagedElement.18"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.19/@ownedEnd.0 //@packagedElement.19/@ownedEnd.1">
+    <ownedEnd type="//Consulta" association="//@packagedElement.19"/>
+    <ownedEnd type="//Foro" association="//@packagedElement.19"/>
+  </packagedElement>
+</cm:CollaborativeModel>
