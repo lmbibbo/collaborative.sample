@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cm:CollaborativeModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://cm/1.0" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <packagedElement xsi:type="cm:Workspace" name="Aula"/>
-  <packagedElement xsi:type="cm:Workspace" name="Auditorio"/>
+  <packagedElement xsi:type="cm:Workspace" name="Auditorios"/>
   <packagedElement xsi:type="cm:Workspace" name="Laboratorio"/>
   <packagedElement xsi:type="cm:CollaborationRole" name="Alumno"/>
   <packagedElement xsi:type="cm:CollaborationRole" name="Docente"/>

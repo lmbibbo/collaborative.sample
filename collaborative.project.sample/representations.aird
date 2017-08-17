@@ -26,7 +26,7 @@
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_32hAooNgEeeB5O3WBBbcZQ"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_32cIIYNgEeeB5O3WBBbcZQ" fontName="Ubuntu" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_32cIIoNgEeeB5O3WBBbcZQ" x="220" y="90" width="30" height="30"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_32cIIoNgEeeB5O3WBBbcZQ" x="220" y="60" width="30" height="30"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_32cvMINgEeeB5O3WBBbcZQ" type="2001" element="_32DGm4NgEeeB5O3WBBbcZQ">
             <children xmi:type="notation:Node" xmi:id="_32cvM4NgEeeB5O3WBBbcZQ" type="5002">
@@ -288,9 +288,9 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/my.project.design/Design/description-vbox/project.odesign#//@ownedViewpoints[name='Luisma']/@ownedRepresentations[name='Todo']/@defaultLayer/@nodeMappings[name='Workspace']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_32DGloNgEeeB5O3WBBbcZQ" name="Auditorio" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="cm:Workspace" href="Sample/VirtualU.cm#//Auditorio"/>
-        <semanticElements xmi:type="cm:Workspace" href="Sample/VirtualU.cm#//Auditorio"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_32DGloNgEeeB5O3WBBbcZQ" name="Auditorios" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="cm:Workspace" href="Sample/VirtualU.cm#//Auditorios"/>
+        <semanticElements xmi:type="cm:Workspace" href="Sample/VirtualU.cm#//Auditorios"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
