@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cm:CollaborativeModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cm="http://cm/1.0" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <packagedElement xsi:type="cm:Workspace" name="SalaReunión"/>
+  <packagedElement xsi:type="cm:Workspace" name="Cafeteria"/>
+  <packagedElement xsi:type="cm:Workspace" name="SalaCapacitación"/>
+  <packagedElement xsi:type="cm:Tool" name="Conference"/>
+  <packagedElement xsi:type="cm:Tool" name="TextEditor"/>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Lider"/>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Guionista"/>
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="RedactarGuión">
+    <ownedBehavior xsi:type="uml:ProtocolStateMachine">
+      <region/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.8/@ownedEnd.0 //@packagedElement.8/@ownedEnd.1">
+    <ownedEnd type="//RedactarGuión" association="//@packagedElement.8"/>
+    <ownedEnd type="//SalaReunión" association="//@packagedElement.8"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.9/@ownedEnd.0 //@packagedElement.9/@ownedEnd.1">
+    <ownedEnd type="//RedactarGuión" association="//@packagedElement.9"/>
+    <ownedEnd type="//Guionista" association="//@packagedElement.9"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.10/@ownedEnd.0 //@packagedElement.10/@ownedEnd.1">
+    <ownedEnd type="//RedactarGuión" association="//@packagedElement.10"/>
+    <ownedEnd type="//Lider" association="//@packagedElement.10"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.11/@ownedEnd.0 //@packagedElement.11/@ownedEnd.1">
+    <ownedEnd type="//RedactarGuión" association="//@packagedElement.11"/>
+    <ownedEnd type="//TextEditor" association="//@packagedElement.11"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:Tool" name="Chat"/>
+  <packagedElement xsi:type="cm:CollaborationRole" name="User"/>
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="Conversación">
+    <ownedBehavior xsi:type="uml:ProtocolStateMachine">
+      <region/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.15/@ownedEnd.0 //@packagedElement.15/@ownedEnd.1">
+    <ownedEnd type="//Conversación" association="//@packagedElement.15"/>
+    <ownedEnd type="//Cafeteria" association="//@packagedElement.15"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.16/@ownedEnd.0 //@packagedElement.16/@ownedEnd.1">
+    <ownedEnd type="//Conversación" association="//@packagedElement.16"/>
+    <ownedEnd type="//Chat" association="//@packagedElement.16"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.17/@ownedEnd.0 //@packagedElement.17/@ownedEnd.1">
+    <ownedEnd type="//Conversación" association="//@packagedElement.17"/>
+    <ownedEnd type="//User" association="//@packagedElement.17"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="Presentación">
+    <ownedBehavior xsi:type="uml:ProtocolStateMachine">
+      <region/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.19/@ownedEnd.0 //@packagedElement.19/@ownedEnd.1">
+    <ownedEnd type="//Presentación" association="//@packagedElement.19"/>
+    <ownedEnd type="//User" association="//@packagedElement.19"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.20/@ownedEnd.0 //@packagedElement.20/@ownedEnd.1">
+    <ownedEnd type="//Presentación" association="//@packagedElement.20"/>
+    <ownedEnd type="//Conference" association="//@packagedElement.20"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Expositor"/>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.22/@ownedEnd.0 //@packagedElement.22/@ownedEnd.1">
+    <ownedEnd type="//Presentación" association="//@packagedElement.22"/>
+    <ownedEnd type="//Expositor" association="//@packagedElement.22"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.23/@ownedEnd.0 //@packagedElement.23/@ownedEnd.1">
+    <ownedEnd type="//Presentación" association="//@packagedElement.23"/>
+    <ownedEnd type="//SalaCapacitación" association="//@packagedElement.23"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:Workspace" name="SalaMultimedia"/>
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="SeleccionarRecursos">
+    <ownedBehavior xsi:type="uml:ProtocolStateMachine">
+      <region/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="ImplementarMontaje">
+    <ownedBehavior xsi:type="uml:ProtocolStateMachine">
+      <region/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.27/@ownedEnd.0 //@packagedElement.27/@ownedEnd.1">
+    <ownedEnd type="//ImplementarMontaje" association="//@packagedElement.27"/>
+    <ownedEnd type="//SalaMultimedia" association="//@packagedElement.27"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.28/@ownedEnd.0 //@packagedElement.28/@ownedEnd.1">
+    <ownedEnd type="//SeleccionarRecursos" association="//@packagedElement.28"/>
+    <ownedEnd type="//SalaMultimedia" association="//@packagedElement.28"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.29/@ownedEnd.0 //@packagedElement.29/@ownedEnd.1">
+    <ownedEnd type="//ImplementarMontaje" association="//@packagedElement.29"/>
+    <ownedEnd type="//Lider" association="//@packagedElement.29"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.30/@ownedEnd.0 //@packagedElement.30/@ownedEnd.1">
+    <ownedEnd type="//SeleccionarRecursos" association="//@packagedElement.30"/>
+    <ownedEnd type="//Lider" association="//@packagedElement.30"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Participante"/>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.32/@ownedEnd.0 //@packagedElement.32/@ownedEnd.1">
+    <ownedEnd type="//ImplementarMontaje" association="//@packagedElement.32"/>
+    <ownedEnd type="//Participante" association="//@packagedElement.32"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.33/@ownedEnd.0 //@packagedElement.33/@ownedEnd.1">
+    <ownedEnd type="//SeleccionarRecursos" association="//@packagedElement.33"/>
+    <ownedEnd type="//Participante" association="//@packagedElement.33"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:Tool" name="RepositorioMultimedia"/>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.35/@ownedEnd.0 //@packagedElement.35/@ownedEnd.1">
+    <ownedEnd type="//SeleccionarRecursos" association="//@packagedElement.35"/>
+    <ownedEnd type="//RepositorioMultimedia" association="//@packagedElement.35"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:Tool" name="EditorMultimedia"/>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.37/@ownedEnd.0 //@packagedElement.37/@ownedEnd.1">
+    <ownedEnd type="//ImplementarMontaje" association="//@packagedElement.37"/>
+    <ownedEnd type="//EditorMultimedia" association="//@packagedElement.37"/>
+  </packagedElement>
+</cm:CollaborativeModel>
