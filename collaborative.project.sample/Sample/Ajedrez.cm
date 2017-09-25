@@ -136,7 +136,12 @@
   <packagedElement xsi:type="cm:AwarenessKind" name="Presencia"/>
   <packagedElement xsi:type="cm:CollaborativeActivity" name="Ver tableros">
     <ownedBehavior xsi:type="uml:ProtocolStateMachine">
-      <region/>
+      <region>
+        <transition source="//Ver%20tableros/@ownedBehavior.0/@region.0/@subvertex.0" target="//Ver%20tableros/@ownedBehavior.0/@region.0/CollaborativeActivityState1"/>
+        <subvertex xsi:type="uml:Pseudostate"/>
+        <subvertex xsi:type="uml:FinalState"/>
+        <subvertex xsi:type="cm:CollaborativeActivityState" name="CollaborativeActivityState1" collaborativeActivity="//Ver%20tableros" assignedOperation="//Jugador/Jugador%20-%3E%20crearPartida" outgoingOperation="//Jugador/Jugador%20-%3E%20crearPartida"/>
+      </region>
     </ownedBehavior>
   </packagedElement>
   <packagedElement xsi:type="cm:CollaborativeActivity" name="JugarPartida">

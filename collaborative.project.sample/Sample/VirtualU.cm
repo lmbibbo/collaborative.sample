@@ -3,11 +3,56 @@
   <packagedElement xsi:type="cm:Workspace" name="Aula"/>
   <packagedElement xsi:type="cm:Workspace" name="Auditorios"/>
   <packagedElement xsi:type="cm:Workspace" name="Laboratorio"/>
-  <packagedElement xsi:type="cm:CollaborationRole" name="Alumno"/>
-  <packagedElement xsi:type="cm:CollaborationRole" name="Docente"/>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Alumno">
+    <ownedOperation name="pedirLaPalabra"/>
+    <ownedOperation name="pedirConsulta"/>
+    <ownedOperation name="enviarMsg"/>
+    <assignedRoleOperation operation="//Alumno/pedirLaPalabra" collaborationRole="//Alumno">
+      <callEvent operation="//Alumno/pedirLaPalabra"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Alumno/pedirConsulta" collaborationRole="//Alumno">
+      <callEvent operation="//Alumno/pedirConsulta"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Alumno/enviarMsg" collaborationRole="//Alumno">
+      <callEvent operation="//Alumno/enviarMsg"/>
+    </assignedRoleOperation>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Docente">
+    <ownedOperation name="darClase"/>
+    <ownedOperation name="darLaPalabra"/>
+    <ownedOperation name="subirMaterial"/>
+    <ownedOperation name="finalizarClase"/>
+    <assignedRoleOperation operation="//Docente/darClase" collaborationRole="//Docente">
+      <callEvent operation="//Docente/darClase"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Docente/darLaPalabra" collaborationRole="//Docente">
+      <callEvent operation="//Docente/darLaPalabra"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Docente/subirMaterial" collaborationRole="//Docente">
+      <callEvent operation="//Docente/subirMaterial"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Docente/finalizarClase" collaborationRole="//Docente">
+      <callEvent operation="//Docente/finalizarClase"/>
+    </assignedRoleOperation>
+  </packagedElement>
   <packagedElement xsi:type="cm:CollaborativeActivity" name="Clase">
     <ownedBehavior xsi:type="uml:ProtocolStateMachine">
-      <region/>
+      <region>
+        <transition xsi:type="uml:ProtocolTransition" source="//Clase/@ownedBehavior.0/@region.0/Presentacion" target="//Clase/@ownedBehavior.0/@region.0/Consultando">
+          <trigger event="//Docente/Docente%20-%3E%20darLaPalabra/@callEvent"/>
+        </transition>
+        <transition xsi:type="uml:ProtocolTransition" source="//Clase/@ownedBehavior.0/@region.0/Presentacion" target="//Clase/@ownedBehavior.0/@region.0/@subvertex.3">
+          <trigger event="//Docente/Docente%20-%3E%20finalizarClase/@callEvent"/>
+        </transition>
+        <transition xsi:type="uml:ProtocolTransition" source="//Clase/@ownedBehavior.0/@region.0/Consultando" target="//Clase/@ownedBehavior.0/@region.0/Presentacion">
+          <trigger event="//Docente/Docente%20-%3E%20darClase/@callEvent"/>
+        </transition>
+        <transition source="//Clase/@ownedBehavior.0/@region.0/@subvertex.0" target="//Clase/@ownedBehavior.0/@region.0/Presentacion"/>
+        <subvertex xsi:type="uml:Pseudostate"/>
+        <subvertex xsi:type="cm:CollaborativeActivityState" name="Presentacion" collaborativeActivity="//Clase" assignedOperation="//Docente/Docente%20-%3E%20darClase //Docente/Docente%20-%3E%20darLaPalabra //Alumno/Alumno%20-%3E%20pedirLaPalabra //Docente/Docente%20-%3E%20finalizarClase" outgoingOperation="//Docente/Docente%20-%3E%20darLaPalabra //Docente/Docente%20-%3E%20finalizarClase"/>
+        <subvertex xsi:type="cm:CollaborativeActivityState" name="Consultando" collaborativeActivity="//Clase" assignedOperation="//Alumno/Alumno%20-%3E%20enviarMsg //Docente/Docente%20-%3E%20darClase //Docente/Docente%20-%3E%20subirMaterial" outgoingOperation="//Docente/Docente%20-%3E%20darClase"/>
+        <subvertex xsi:type="uml:FinalState"/>
+      </region>
     </ownedBehavior>
   </packagedElement>
   <packagedElement xsi:type="cm:CollaborativeActivity" name="Consulta">
@@ -31,7 +76,12 @@
     <ownedEnd type="//Clase" association="//@packagedElement.10"/>
     <ownedEnd type="//Docente" association="//@packagedElement.10"/>
   </packagedElement>
-  <packagedElement xsi:type="cm:CollaborationRole" name="Tutor"/>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Tutor">
+    <ownedOperation name="responderPregunta"/>
+    <assignedRoleOperation operation="//Tutor/responderPregunta" collaborationRole="//Tutor">
+      <callEvent operation="//Tutor/responderPregunta"/>
+    </assignedRoleOperation>
+  </packagedElement>
   <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.12/@ownedEnd.0 //@packagedElement.12/@ownedEnd.1">
     <ownedEnd type="//Consulta" association="//@packagedElement.12"/>
     <ownedEnd type="//Tutor" association="//@packagedElement.12"/>
@@ -55,4 +105,59 @@
     <ownedEnd type="//Consulta" association="//@packagedElement.19"/>
     <ownedEnd type="//Foro" association="//@packagedElement.19"/>
   </packagedElement>
+  <packagedElement xsi:type="cm:AwarenessKind" name="Presencia"/>
+  <packagedElement xsi:type="cm:AwarenessKind" name="Ubicacion"/>
+  <packagedElement xsi:type="cm:AwarenessKind" name="Accion"/>
+  <packagedElement xsi:type="cm:AwarenessKind" name="Objeto"/>
+  <packagedElement xsi:type="uml:ChangeEvent" name="InicioDeClase"/>
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="Experimentar">
+    <ownedBehavior xsi:type="uml:ProtocolStateMachine">
+      <region/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="Presentacion">
+    <ownedBehavior xsi:type="uml:ProtocolStateMachine">
+      <region/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.27/@ownedEnd.0 //@packagedElement.27/@ownedEnd.1">
+    <ownedEnd type="//Presentacion" association="//@packagedElement.27"/>
+    <ownedEnd type="//Auditorios" association="//@packagedElement.27"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.28/@ownedEnd.0 //@packagedElement.28/@ownedEnd.1">
+    <ownedEnd type="//Experimentar" association="//@packagedElement.28"/>
+    <ownedEnd type="//Laboratorio" association="//@packagedElement.28"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborativeProcess" name="PresentacionProp">
+    <ownedBehavior xsi:type="uml:Activity">
+      <edge xsi:type="uml:ControlFlow" target="//PresentacionProp/@ownedBehavior.0/@ownedNode.3" source="//PresentacionProp/@ownedBehavior.0/Presentacion"/>
+      <edge xsi:type="uml:ControlFlow" target="//PresentacionProp/@ownedBehavior.0/@ownedNode.5" source="//PresentacionProp/@ownedBehavior.0/Clase"/>
+      <edge xsi:type="uml:ControlFlow" target="//PresentacionProp/@ownedBehavior.0/@ownedNode.2"/>
+      <edge xsi:type="uml:ControlFlow" target="//PresentacionProp/@ownedBehavior.0/Consulta" source="//PresentacionProp/@ownedBehavior.0/@ownedNode.2"/>
+      <edge xsi:type="uml:ControlFlow" target="//PresentacionProp/@ownedBehavior.0/Clase" source="//PresentacionProp/@ownedBehavior.0/@ownedNode.0"/>
+      <edge xsi:type="uml:ControlFlow" target="//PresentacionProp/@ownedBehavior.0/Presentacion" source="//PresentacionProp/@ownedBehavior.0/Experimentar"/>
+      <edge xsi:type="uml:ControlFlow" target="//PresentacionProp/@ownedBehavior.0/Experimentar" source="//PresentacionProp/@ownedBehavior.0/@ownedNode.2"/>
+      <edge xsi:type="uml:ControlFlow" target="//PresentacionProp/@ownedBehavior.0/@ownedNode.2" source="//PresentacionProp/@ownedBehavior.0/@ownedNode.5"/>
+      <edge xsi:type="uml:ControlFlow" target="//PresentacionProp/@ownedBehavior.0/@ownedNode.2" source="//PresentacionProp/@ownedBehavior.0/Consulta"/>
+      <edge xsi:type="uml:ControlFlow" target="//PresentacionProp/@ownedBehavior.0/Consulta" source="//PresentacionProp/@ownedBehavior.0/@ownedNode.5"/>
+      <ownedNode xsi:type="uml:InitialNode" outgoing="//PresentacionProp/@ownedBehavior.0/@edge.4"/>
+      <ownedNode xsi:type="cm:CollaborativeActivityNode" name="Clase" incoming="//PresentacionProp/@ownedBehavior.0/@edge.4" outgoing="//PresentacionProp/@ownedBehavior.0/@edge.1"/>
+      <ownedNode xsi:type="uml:DecisionNode" incoming="//PresentacionProp/@ownedBehavior.0/@edge.2 //PresentacionProp/@ownedBehavior.0/@edge.7 //PresentacionProp/@ownedBehavior.0/@edge.8" outgoing="//PresentacionProp/@ownedBehavior.0/@edge.3 //PresentacionProp/@ownedBehavior.0/@edge.6"/>
+      <ownedNode xsi:type="uml:ActivityFinalNode" incoming="//PresentacionProp/@ownedBehavior.0/@edge.0"/>
+      <ownedNode xsi:type="cm:CollaborativeActivityNode" name="Presentacion" incoming="//PresentacionProp/@ownedBehavior.0/@edge.5" outgoing="//PresentacionProp/@ownedBehavior.0/@edge.0"/>
+      <ownedNode xsi:type="uml:ForkNode" incoming="//PresentacionProp/@ownedBehavior.0/@edge.1" outgoing="//PresentacionProp/@ownedBehavior.0/@edge.7 //PresentacionProp/@ownedBehavior.0/@edge.9"/>
+      <ownedNode xsi:type="cm:CollaborativeActivityNode" name="Consulta" incoming="//PresentacionProp/@ownedBehavior.0/@edge.3 //PresentacionProp/@ownedBehavior.0/@edge.9" outgoing="//PresentacionProp/@ownedBehavior.0/@edge.8"/>
+      <ownedNode xsi:type="cm:CollaborativeActivityNode" name="Experimentar" incoming="//PresentacionProp/@ownedBehavior.0/@edge.6" outgoing="//PresentacionProp/@ownedBehavior.0/@edge.5">
+        <event xsi:type="uml:CallEvent" name="onFinish"/>
+      </ownedNode>
+      <structuredNode/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:AwarenessKind" name="Avance"/>
+  <packagedElement xsi:type="cm:AwarenessKind" name="LevantaMano"/>
+  <awarenessInfo name="Presencia" kind="//Presencia" source="//InicioDeClase" shownIn="//Aula //Conference"/>
+  <awarenessInfo name="Objeto" kind="//Objeto" source="//Docente/Docente%20-%3E%20subirMaterial/@callEvent" shownIn="//Clase"/>
+  <awarenessInfo name="Accion" kind="//Accion" source="//Alumno/Alumno%20-%3E%20enviarMsg/@callEvent" shownIn="//Consulta"/>
+  <awarenessInfo name="Avance" kind="//Avance" source="//PresentacionProp/@ownedBehavior.0/Experimentar/onFinish" shownIn="//Experimentar"/>
+  <awarenessInfo name="LevantaMano" kind="//LevantaMano" source="//Alumno/Alumno%20-%3E%20pedirLaPalabra/@callEvent" shownIn="//Clase"/>
 </cm:CollaborativeModel>
