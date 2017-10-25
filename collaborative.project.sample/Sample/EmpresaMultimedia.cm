@@ -60,7 +60,28 @@
     <ownedEnd type="//Presentación" association="//@packagedElement.20"/>
     <ownedEnd type="//Conference" association="//@packagedElement.20"/>
   </packagedElement>
-  <packagedElement xsi:type="cm:CollaborationRole" name="Expositor"/>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Expositor">
+    <ownedOperation name="darLaPalabra"/>
+    <ownedOperation name="enviarMensaje"/>
+    <ownedOperation name="iniciar"/>
+    <ownedOperation name="finalizar"/>
+    <ownedOperation name="operation5"/>
+    <assignedRoleOperation operation="//Expositor/darLaPalabra" collaborationRole="//Expositor">
+      <callEvent operation="//Expositor/darLaPalabra"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Expositor/enviarMensaje" collaborationRole="//Expositor">
+      <callEvent operation="//Expositor/enviarMensaje"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Expositor/iniciar" collaborationRole="//Expositor">
+      <callEvent operation="//Expositor/iniciar"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Expositor/finalizar" collaborationRole="//Expositor">
+      <callEvent operation="//Expositor/finalizar"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Expositor/operation5" collaborationRole="//Expositor">
+      <callEvent operation="//Expositor/operation5"/>
+    </assignedRoleOperation>
+  </packagedElement>
   <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.22/@ownedEnd.0 //@packagedElement.22/@ownedEnd.1">
     <ownedEnd type="//Presentación" association="//@packagedElement.22"/>
     <ownedEnd type="//Expositor" association="//@packagedElement.22"/>
@@ -115,4 +136,11 @@
     <ownedEnd type="//ImplementarMontaje" association="//@packagedElement.37"/>
     <ownedEnd type="//EditorMultimedia" association="//@packagedElement.37"/>
   </packagedElement>
+  <packagedElement xsi:type="cm:CollaborativeProcess" name="Process1">
+    <ownedBehavior xsi:type="uml:Activity">
+      <structuredNode/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:AwarenessKind" name="AwarenessKind1"/>
+  <awarenessInfo name="AwarenessKind1" kind="//AwarenessKind1" source="//Expositor/Expositor%20-%3E%20operation5/@callEvent"/>
 </cm:CollaborativeModel>

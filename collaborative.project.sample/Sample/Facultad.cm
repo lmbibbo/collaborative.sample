@@ -34,11 +34,43 @@
       <region/>
     </ownedBehavior>
   </packagedElement>
-  <packagedElement xsi:type="cm:CollaborationRole" name="Consejero"/>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Consejero">
+    <ownedOperation name="enviarMsg"/>
+    <ownedOperation name="enviarMsg"/>
+    <ownedOperation name="escribirBorrador"/>
+    <ownedOperation name="guardarMsg"/>
+    <assignedRoleOperation operation="//Consejero/enviarMsg.1" collaborationRole="//Consejero">
+      <callEvent operation="//Consejero/enviarMsg.1"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Consejero/escribirBorrador" collaborationRole="//Consejero">
+      <callEvent operation="//Consejero/escribirBorrador"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Consejero/guardarMsg" collaborationRole="//Consejero">
+      <callEvent operation="//Consejero/guardarMsg"/>
+    </assignedRoleOperation>
+  </packagedElement>
   <packagedElement xsi:type="cm:Tool" name="Votación"/>
   <packagedElement xsi:type="cm:CollaborativeActivity" name="Decisión">
     <ownedBehavior xsi:type="uml:ProtocolStateMachine">
-      <region/>
+      <region>
+        <transition xsi:type="uml:ProtocolTransition" source="//Decisión/@ownedBehavior.0/@region.0/Estado1" target="//Decisión/@ownedBehavior.0/@region.0/@subvertex.3">
+          <trigger event="//Presidente/Presidente%20-%3E%20finChat/@callEvent"/>
+        </transition>
+        <transition xsi:type="uml:ProtocolTransition" source="//Decisión/@ownedBehavior.0/@region.0/Estado1" target="//Decisión/@ownedBehavior.0/@region.0/Estado2">
+          <trigger event="//Presidente/Presidente%20-%3E%20darLaPalabra/@callEvent"/>
+        </transition>
+        <transition xsi:type="uml:ProtocolTransition" target="//Decisión/@ownedBehavior.0/@region.0/Estado1">
+          <trigger/>
+        </transition>
+        <transition xsi:type="uml:ProtocolTransition" source="//Decisión/@ownedBehavior.0/@region.0/Estado2" target="//Decisión/@ownedBehavior.0/@region.0/Estado1">
+          <trigger event="//Consejero/Consejero%20-%3E%20enviarMsg/@callEvent"/>
+        </transition>
+        <transition source="//Decisión/@ownedBehavior.0/@region.0/@subvertex.0" target="//Decisión/@ownedBehavior.0/@region.0/Estado1"/>
+        <subvertex xsi:type="uml:Pseudostate"/>
+        <subvertex xsi:type="cm:CollaborativeActivityState" name="Estado1" collaborativeActivity="//Decisión" assignedOperation="//Presidente/Presidente%20-%3E%20finChat //Presidente/Presidente%20-%3E%20enviarMsg //Consejero/Consejero%20-%3E%20escribirBorrador //Presidente/Presidente%20-%3E%20guardarMsg //Presidente/Presidente%20-%3E%20darLaPalabra" outgoingOperation="//Presidente/Presidente%20-%3E%20finChat //Presidente/Presidente%20-%3E%20darLaPalabra"/>
+        <subvertex xsi:type="cm:CollaborativeActivityState" name="Estado2" collaborativeActivity="//Decisión" assignedOperation="//Consejero/Consejero%20-%3E%20enviarMsg //Consejero/Consejero%20-%3E%20guardarMsg //Presidente/Presidente%20-%3E%20escribirBorrador" outgoingOperation="//Consejero/Consejero%20-%3E%20enviarMsg"/>
+        <subvertex xsi:type="uml:FinalState"/>
+      </region>
     </ownedBehavior>
   </packagedElement>
   <packagedElement xsi:type="cm:CollaborativeActivity" name="Resolución">
@@ -104,36 +136,39 @@
       <region/>
     </ownedBehavior>
   </packagedElement>
-  <packagedElement xsi:type="cm:CollaborativeActivity" name="GiraraComisión">
+  <packagedElement xsi:type="cm:CollaborativeActivity" name="ElegirDestino">
     <ownedBehavior xsi:type="uml:ProtocolStateMachine">
       <region/>
     </ownedBehavior>
   </packagedElement>
   <packagedElement xsi:type="cm:CollaborationRole" name="SecretarioAcadémico"/>
   <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.38/@ownedEnd.0 //@packagedElement.38/@ownedEnd.1">
-    <ownedEnd type="//GiraraComisión" association="//@packagedElement.38"/>
+    <ownedEnd type="//ElegirDestino" association="//@packagedElement.38"/>
     <ownedEnd type="//Consejero" association="//@packagedElement.38"/>
   </packagedElement>
   <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.39/@ownedEnd.0 //@packagedElement.39/@ownedEnd.1">
-    <ownedEnd type="//GiraraComisión" association="//@packagedElement.39"/>
+    <ownedEnd type="//ElegirDestino" association="//@packagedElement.39"/>
     <ownedEnd type="//SecretarioAcadémico" association="//@packagedElement.39"/>
   </packagedElement>
   <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.40/@ownedEnd.0 //@packagedElement.40/@ownedEnd.1">
-    <ownedEnd type="//GiraraComisión" association="//@packagedElement.40"/>
+    <ownedEnd type="//ElegirDestino" association="//@packagedElement.40"/>
     <ownedEnd type="//Mesa%20de%20Entrada" association="//@packagedElement.40"/>
   </packagedElement>
   <packagedElement xsi:type="cm:Tool" name="Selección"/>
   <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.42/@ownedEnd.0 //@packagedElement.42/@ownedEnd.1">
-    <ownedEnd type="//GiraraComisión" association="//@packagedElement.42"/>
+    <ownedEnd type="//ElegirDestino" association="//@packagedElement.42"/>
     <ownedEnd type="//Selección" association="//@packagedElement.42"/>
   </packagedElement>
   <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.43/@ownedEnd.0 //@packagedElement.43/@ownedEnd.1">
-    <ownedEnd type="//GiraraComisión" association="//@packagedElement.43"/>
+    <ownedEnd type="//ElegirDestino" association="//@packagedElement.43"/>
     <ownedEnd type="//Chat" association="//@packagedElement.43"/>
   </packagedElement>
   <packagedElement xsi:type="cm:CollaborativeActivity" name="Discusión">
     <ownedBehavior xsi:type="uml:ProtocolStateMachine">
-      <region/>
+      <region>
+        <subvertex xsi:type="uml:Pseudostate"/>
+        <subvertex xsi:type="cm:CollaborativeActivityState" name="State1" collaborativeActivity="//Discusión"/>
+      </region>
     </ownedBehavior>
   </packagedElement>
   <packagedElement xsi:type="cm:BelongsRelationship" memberEnd="//@packagedElement.45/@ownedEnd.0 //@packagedElement.45/@ownedEnd.1">
@@ -165,4 +200,83 @@
     <ownedEnd type="//Discusión" association="//@packagedElement.52"/>
     <ownedEnd type="//ConsejeroEnComisión" association="//@packagedElement.52"/>
   </packagedElement>
+  <packagedElement xsi:type="cm:CollaborativeProcess" name="SeguimientoExp">
+    <ownedBehavior xsi:type="uml:Activity">
+      <edge xsi:type="uml:ControlFlow" target="//SeguimientoExp/@ownedBehavior.0/InicioExp" source="//SeguimientoExp/@ownedBehavior.0/@ownedNode.0"/>
+      <edge xsi:type="uml:ControlFlow" name="Administrativa->endNote" target="//SeguimientoExp/@ownedBehavior.0/ElegirDestino" source="//SeguimientoExp/@ownedBehavior.0/InicioExp"/>
+      <edge xsi:type="uml:ControlFlow" name="Administrativa->irComisión" target="//SeguimientoExp/@ownedBehavior.0/Discusión" source="//SeguimientoExp/@ownedBehavior.0/ElegirDestino"/>
+      <edge xsi:type="uml:ControlFlow" name="ConsejeroEnComisión->redactarDictamen" target="//SeguimientoExp/@ownedBehavior.0/EditorDictamen" source="//SeguimientoExp/@ownedBehavior.0/Discusión"/>
+      <edge xsi:type="uml:ControlFlow" name="Administrativa->irConsejo" target="//SeguimientoExp/@ownedBehavior.0/@ownedNode.9" source="//SeguimientoExp/@ownedBehavior.0/ElegirDestino"/>
+      <edge xsi:type="uml:ControlFlow" name="Secretario->mandarAConsejo" target="//SeguimientoExp/@ownedBehavior.0/@ownedNode.9" source="//SeguimientoExp/@ownedBehavior.0/EditorDictamen"/>
+      <edge xsi:type="uml:ControlFlow" name="Presidente->votar" target="//SeguimientoExp/@ownedBehavior.0/Decisión" source="//SeguimientoExp/@ownedBehavior.0/Presentación"/>
+      <edge xsi:type="uml:ControlFlow" name="Presidente->redactarResolución" target="//SeguimientoExp/@ownedBehavior.0/Resolución" source="//SeguimientoExp/@ownedBehavior.0/Decisión"/>
+      <edge xsi:type="uml:ControlFlow" name="Presidente->finReunión" target="//SeguimientoExp/@ownedBehavior.0/@ownedNode.2" source="//SeguimientoExp/@ownedBehavior.0/Resolución"/>
+      <edge xsi:type="uml:ControlFlow" name="Admisnitartiva -> iniciarConsejo" target="//SeguimientoExp/@ownedBehavior.0/Presentación" source="//SeguimientoExp/@ownedBehavior.0/@ownedNode.9"/>
+      <ownedNode xsi:type="uml:InitialNode" outgoing="//SeguimientoExp/@ownedBehavior.0/@edge.0"/>
+      <ownedNode xsi:type="cm:CollaborativeActivityNode" name="InicioExp" incoming="//SeguimientoExp/@ownedBehavior.0/@edge.0" outgoing="//SeguimientoExp/@ownedBehavior.0/Administrativa-%3EendNote"/>
+      <ownedNode xsi:type="uml:ActivityFinalNode" incoming="//SeguimientoExp/@ownedBehavior.0/Presidente-%3EfinReunión"/>
+      <ownedNode xsi:type="cm:CollaborativeActivityNode" name="ElegirDestino" incoming="//SeguimientoExp/@ownedBehavior.0/Administrativa-%3EendNote" outgoing="//SeguimientoExp/@ownedBehavior.0/Administrativa-%3EirComisión //SeguimientoExp/@ownedBehavior.0/Administrativa-%3EirConsejo"/>
+      <ownedNode xsi:type="cm:CollaborativeActivityNode" name="Presentación" incoming="//SeguimientoExp/@ownedBehavior.0/Admisnitartiva%20-%3E%20iniciarConsejo" outgoing="//SeguimientoExp/@ownedBehavior.0/Presidente-%3Evotar">
+        <event xsi:type="uml:CallEvent" name="onEnter"/>
+      </ownedNode>
+      <ownedNode xsi:type="cm:CollaborativeActivityNode" name="Discusión" incoming="//SeguimientoExp/@ownedBehavior.0/Administrativa-%3EirComisión" outgoing="//SeguimientoExp/@ownedBehavior.0/ConsejeroEnComisión-%3EredactarDictamen">
+        <event xsi:type="uml:CallEvent" name="onEnter"/>
+      </ownedNode>
+      <ownedNode xsi:type="cm:CollaborativeActivityNode" name="EditorDictamen" incoming="//SeguimientoExp/@ownedBehavior.0/ConsejeroEnComisión-%3EredactarDictamen" outgoing="//SeguimientoExp/@ownedBehavior.0/Secretario-%3EmandarAConsejo">
+        <event xsi:type="uml:CallEvent" name="onType"/>
+      </ownedNode>
+      <ownedNode xsi:type="cm:CollaborativeActivityNode" name="Resolución" incoming="//SeguimientoExp/@ownedBehavior.0/Presidente-%3EredactarResolución" outgoing="//SeguimientoExp/@ownedBehavior.0/Presidente-%3EfinReunión"/>
+      <ownedNode xsi:type="cm:CollaborativeActivityNode" name="Decisión" incoming="//SeguimientoExp/@ownedBehavior.0/Presidente-%3Evotar" outgoing="//SeguimientoExp/@ownedBehavior.0/Presidente-%3EredactarResolución"/>
+      <ownedNode xsi:type="uml:JoinNode" incoming="//SeguimientoExp/@ownedBehavior.0/Administrativa-%3EirConsejo //SeguimientoExp/@ownedBehavior.0/Secretario-%3EmandarAConsejo" outgoing="//SeguimientoExp/@ownedBehavior.0/Admisnitartiva%20-%3E%20iniciarConsejo"/>
+      <structuredNode/>
+    </ownedBehavior>
+  </packagedElement>
+  <packagedElement xsi:type="cm:CollaborationRole" name="Presidente">
+    <ownedOperation name="enviarMsg"/>
+    <ownedOperation name="finChat"/>
+    <ownedOperation name="enviarMsg"/>
+    <ownedOperation name="guardarMsg"/>
+    <ownedOperation name="escribirBorrador"/>
+    <ownedOperation name="darLaPalabra"/>
+    <assignedRoleOperation operation="//Presidente/finChat" collaborationRole="//Presidente">
+      <callEvent operation="//Presidente/finChat"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Presidente/enviarMsg.1" collaborationRole="//Presidente">
+      <callEvent operation="//Presidente/enviarMsg.1"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Presidente/guardarMsg" collaborationRole="//Presidente">
+      <callEvent operation="//Presidente/guardarMsg"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Presidente/escribirBorrador" collaborationRole="//Presidente">
+      <callEvent operation="//Presidente/escribirBorrador"/>
+    </assignedRoleOperation>
+    <assignedRoleOperation operation="//Presidente/darLaPalabra" collaborationRole="//Presidente">
+      <callEvent operation="//Presidente/darLaPalabra"/>
+    </assignedRoleOperation>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.55/@ownedEnd.0 //@packagedElement.55/@ownedEnd.1">
+    <ownedEnd type="//Decisión" association="//@packagedElement.55"/>
+    <ownedEnd type="//Presidente" association="//@packagedElement.55"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:ParticipationRelationship" memberEnd="//@packagedElement.56/@ownedEnd.0 //@packagedElement.56/@ownedEnd.1">
+    <ownedEnd type="//Presentación" association="//@packagedElement.56"/>
+    <ownedEnd type="//Presidente" association="//@packagedElement.56"/>
+  </packagedElement>
+  <packagedElement xsi:type="cm:AwarenessKind" name="Presencia"/>
+  <packagedElement xsi:type="cm:AwarenessKind" name="Ubicación"/>
+  <packagedElement xsi:type="cm:AwarenessKind" name="Acción"/>
+  <packagedElement xsi:type="cm:AwarenessKind" name="Rol"/>
+  <packagedElement xsi:type="cm:AwarenessKind" name="Cambios"/>
+  <packagedElement xsi:type="uml:ChangeEvent" name="Lugar"/>
+  <packagedElement xsi:type="uml:ChangeEvent" name="SetRol"/>
+  <packagedElement xsi:type="cm:Tool" name="Tool9"/>
+  <packagedElement xsi:type="cm:UseRelationship" memberEnd="//@packagedElement.65/@ownedEnd.0 //@packagedElement.65/@ownedEnd.1">
+    <ownedEnd type="//EditorDictamen" association="//@packagedElement.65"/>
+    <ownedEnd type="//Tool9" association="//@packagedElement.65"/>
+  </packagedElement>
+  <awarenessInfo name="Presencia" kind="//Presencia" source="//SeguimientoExp/@ownedBehavior.0/Presentación/onEnter" shownIn="//Mesa%20de%20Entrada //Consejo"/>
+  <awarenessInfo name="Acción" kind="//Acción" source="//SeguimientoExp/@ownedBehavior.0/EditorDictamen/onType" shownIn="//EditordeResolución //EditorOrdenDia"/>
+  <awarenessInfo name="Cambios" kind="//Cambios" source="//Consejero/Consejero%20-%3E%20enviarMsg/@callEvent" shownIn="//Discusión"/>
+  <awarenessInfo name="Rol" kind="//Rol" source="//Presidente/Presidente%20-%3E%20enviarMsg/@callEvent" shownIn="//Presentación"/>
+  <awarenessInfo name="Ubicación" kind="//Ubicación" source="//Lugar" shownIn="//Consejo //Mesa%20de%20Entrada"/>
 </cm:CollaborativeModel>
